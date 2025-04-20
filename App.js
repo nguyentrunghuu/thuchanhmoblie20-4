@@ -1,7 +1,11 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+
+// Screens
 import SplashScreen from './src/screens/SplashScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen';
 import SignInScreen from './src/screens/SignInScreen';
@@ -12,19 +16,19 @@ import SignUpScreen from './src/screens/SignUpScreen';
 import SelectLocationScreen from './src/screens/SelectLocationScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import ProductDetailScreen from './src/screens/ProductDetailScreen';
-import ExploreScreen from './src/screens/ExploreScreen';
 import BeveragesScreen from './src/screens/BeveragesScreen';
-import { Ionicons } from '@expo/vector-icons';
+import SearchScreen from './src/screens/SearchScreen'; // Explore
+import FilterScreen from './src/screens/FilterScreen'; // Filter screen
 
-// Dummy screens for other tabs
-const CartScreen = () => <Text>Cart Screen</Text>;
-const FavouriteScreen = () => <Text>Favourite Screen</Text>;
-const AccountScreen = () => <Text>Account Screen</Text>;
+// Dummy tab screens
+const CartScreen = () => <Text style={{ padding: 20 }}>Cart Screen</Text>;
+const FavouriteScreen = () => <Text style={{ padding: 20 }}>Favourite Screen</Text>;
+const AccountScreen = () => <Text style={{ padding: 20 }}>Account Screen</Text>;
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Bottom Tab Navigator
+// Bottom Tabs
 const MainTabs = () => {
   return (
     <Tab.Navigator
@@ -32,7 +36,7 @@ const MainTabs = () => {
         tabBarIcon: ({ color, size }) => {
           let iconName;
           if (route.name === 'Shop') iconName = 'home-outline';
-          else if (route.name === 'Explore') iconName = 'compass-outline';
+          else if (route.name === 'Explore') iconName = 'search-outline';
           else if (route.name === 'Cart') iconName = 'cart-outline';
           else if (route.name === 'Favourite') iconName = 'heart-outline';
           else if (route.name === 'Account') iconName = 'person-outline';
@@ -45,7 +49,7 @@ const MainTabs = () => {
       })}
     >
       <Tab.Screen name="Shop" component={HomeScreen} />
-      <Tab.Screen name="Explore" component={ExploreScreen} />
+      <Tab.Screen name="Explore" component={SearchScreen} />
       <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen name="Favourite" component={FavouriteScreen} />
       <Tab.Screen name="Account" component={AccountScreen} />
@@ -53,7 +57,7 @@ const MainTabs = () => {
   );
 };
 
-// Main Stack Navigator
+// Main App
 export default function App() {
   return (
     <NavigationContainer>
@@ -67,8 +71,9 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Main" component={MainTabs} />
-        <Stack.Screen name="ProductDetail" component={ProductDetailScreen} options={{ title: 'Product Detail' }} />
-        <Stack.Screen name="Beverages" component={BeveragesScreen} options={{ title: 'Beverages' }} />
+        <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+        <Stack.Screen name="Beverages" component={BeveragesScreen} />
+        <Stack.Screen name="Filter" component={FilterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
