@@ -1,6 +1,6 @@
-# Họ và tên: Nguyễn Tùng Lâm
+# Họ và tên: Nguyễn Trung Hữu
 ## Lớp: D17CNPM5
-## MSV: 22810310371
-## Nectar App - P4 - Search/Filter
+## MSV: 22810310367
+## Thuc Hanh Mobile 20-4
 ![anh4.jpg](anh4.jpg)
 ![anh5.jpg](anh5.jpg)
